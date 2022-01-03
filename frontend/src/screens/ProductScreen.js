@@ -24,7 +24,6 @@ const ProductScreen = ({ match, history }) => {
     const { loading, error, product } = productDetails;
 
     useEffect(() => {
-        console.log('productScreen useEffect activated');
         dispatch(listProductDetails(match.params.id));
     }, [dispatch, match]);
 
