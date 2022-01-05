@@ -14,7 +14,6 @@ import {
 import { addToCart, removeFromCart } from '../actions/cartActions';
 
 const CartScreen = ({ match, location, history }) => {
-    console.log('this is cartScreen');
     const productId = match.params.id;
 
     const quantity = location.search
@@ -27,7 +26,6 @@ const CartScreen = ({ match, location, history }) => {
     const { cartItems } = cart;
 
     useEffect(() => {
-        console.log('cartScreen useEffect is running');
         if (productId) {
             dispatch(addToCart(productId, quantity));
         }
