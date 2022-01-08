@@ -37,6 +37,12 @@ function App() {
                     <Route
                         path='/admin/product-list'
                         component={ProductListScreen}
+                        exact
+                    />
+                    <Route
+                        path='/admin/product-list/:pageNum'
+                        component={ProductListScreen}
+                        exact
                     />
                     <Route
                         path='/admin/product/:id/edit'
@@ -46,6 +52,17 @@ function App() {
                         path='/admin/order-list'
                         component={OrderListScreen}
                     />
+                    <Route
+                        path='/search/:keyword'
+                        component={HomeScreen}
+                        exact
+                    />
+                    <Route
+                        path='/sear/:keyword/page/:pageNum'
+                        component={HomeScreen}
+                        exact
+                    />
+                    <Route path='/page/:pageNum' component={HomeScreen} exact />
                     <Route path='/' component={HomeScreen} exact />
                 </Container>
             </main>
