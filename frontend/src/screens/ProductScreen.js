@@ -50,12 +50,12 @@ const ProductScreen = ({ match, history }) => {
     }, [dispatch, match, successProductReview]);
 
     const addToCartHandler = () => {
-        console.log('addToCartHandler has been run');
         history.push(`/cart/${match.params.id}?quantity=${quantity}`);
     };
 
     const submitHandler = (e) => {
         e.preventDefault();
+        dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
         dispatch(
             createProductReview(match.params.id, {
                 rating,

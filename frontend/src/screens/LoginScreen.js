@@ -35,7 +35,7 @@ const LoginScreen = ({ location, history }) => {
             {loading && <Loader />}
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId='email' className='mb-2'>
-                    <Form.Label>Email Address</Form.Label>
+                    <Form.Label>Email </Form.Label>
                     <Form.Control
                         type='email'
                         placeholder='Enter email'
@@ -44,7 +44,7 @@ const LoginScreen = ({ location, history }) => {
                     ></Form.Control>
                 </Form.Group>
                 <Form.Group controlId='password' className='mb-3'>
-                    <Form.Label>Password Address</Form.Label>
+                    <Form.Label>Password</Form.Label>
                     <Form.Control
                         type='password'
                         placeholder='Enter password'
