@@ -41,7 +41,7 @@ const orderSchema = mongoose.Schema(
             required: true,
             default: 0.0,
         },
-        shppingPrice: {
+        shippingPrice: {
             type: Number,
             required: true,
             default: 0.0,
@@ -55,6 +55,9 @@ const orderSchema = mongoose.Schema(
             type: Boolean,
             required: true,
             default: false,
+        },
+        paidAt: {
+            type: Date,
         },
         isDelivered: {
             type: Boolean,

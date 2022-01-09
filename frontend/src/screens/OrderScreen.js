@@ -17,7 +17,7 @@ import {
 } from '../constants/orderConstants';
 
 const OrderScreen = ({ match, history }) => {
-    const orderId = match.params.orderId;
+    const orderId = match.params.id;
     const [sdkReady, setSdkReady] = useState(false);
 
     const dispatch = useDispatch();
@@ -63,7 +63,7 @@ const OrderScreen = ({ match, history }) => {
             document.body.appendChild(script);
         };
 
-        if (!order || successPay || successDeliver) {
+        if (!order || successPay || successDeliver || order._id !== orderId) {
             dispatch({
                 type: ORDER_PAY_RESET,
             });
@@ -239,6 +239,7 @@ const OrderScreen = ({ match, history }) => {
                                         <Button
                                             type='button'
                                             className='btn btn-block'
+                                            style={{ width: '100%' }}
                                             onClick={deliverHandler}
                                         >
                                             Mark As Delivered

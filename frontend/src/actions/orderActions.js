@@ -22,7 +22,6 @@ import {
 
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
-        console.log('creating order');
         dispatch({
             type: ORDER_CREATE_REQUEST,
         });
@@ -38,7 +37,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
             },
         };
         const { data } = await axios.post(`/api/orders`, order, config);
-        console.log('orderAction', data, userInfo);
+
         dispatch({
             type: ORDER_CREATE_SUCCESS,
             payload: data,
@@ -56,7 +55,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
 
 export const getOrderDetails = (orderId) => async (dispatch, getState) => {
     try {
-        console.log('getting order details');
         dispatch({
             type: ORDER_DETAILS_REQUEST,
         });
@@ -144,7 +142,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
         };
 
         const { data } = await axios.put(
-            `/api/orders/${order._id}/pay`,
+            `/api/orders/${order._id}/deliver`,
             {},
             config,
         );
@@ -164,7 +162,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
 };
 
-export const listMyOder = () => async (dispatch, getState) => {
+export const listMyOrders = () => async (dispatch, getState) => {
     try {
         dispatch({
             type: ORDER_LIST_MY_REQUEST,

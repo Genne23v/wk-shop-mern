@@ -27,14 +27,14 @@ const ProfileScreen = ({ location, history }) => {
     const { success } = userUpdateProfile;
 
     const orderListMy = useSelector((state) => state.orderListMy);
-    const { loading: loadingOrders, error: errorOrders, user } = orderListMy;
+    const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
     useEffect(() => {
         if (!userInfo) {
             history.push('/login');
         } else {
             if (!user || !user.name || success) {
-                dispatch(type: USER_UPDATE_PROFILE_RESET)
+                dispatch({ type: USER_UPDATE_PROFILE_RESET });
                 dispatch(getUserDetails('profile'));
                 dispatch(listMyOrders());
             } else {
@@ -50,9 +50,12 @@ const ProfileScreen = ({ location, history }) => {
         if (password !== confirmPassword) {
             setMessage('Passwords do not match');
         } else {
+            setMessage(null);
             dispatch(
                 updateUserProfile({ id: user._id, name, email, password }),
             );
+            setPassword('');
+            setConfirmPassword('');
         }
     };
 
@@ -70,7 +73,7 @@ const ProfileScreen = ({ location, history }) => {
                     <Message variant='danger'>{error}</Message>
                 ) : (
                     <Form onSubmit={submitHandler}>
-                        <Form.Group controlId='name'>
+                        <Form.Group controlId='name' className='mb-2'>
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type='name'
@@ -80,7 +83,7 @@ const ProfileScreen = ({ location, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='email'>
+                        <Form.Group controlId='email' className='mb-2'>
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control
                                 type='email'
@@ -90,7 +93,7 @@ const ProfileScreen = ({ location, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='password'>
+                        <Form.Group controlId='password' className='mb-2'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type='password'
@@ -100,7 +103,10 @@ const ProfileScreen = ({ location, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='confirmPassword'>
+                        <Form.Group
+                            controlId='confirmPassword'
+                            className='mb-3'
+                        >
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control
                                 type='password'
@@ -146,8 +152,8 @@ const ProfileScreen = ({ location, history }) => {
                             {orders.map((order) => (
                                 <tr key={order._id}>
                                     <td>{order._id}</td>
-                                    <td>{order._createdAt.subString(0, 10)}</td>
-                                    <td>{order.totalPrice}</td>
+                                    <td>{order.createdAt.substring(0, 10)}</td>
+                                    <td>${order.totalPrice}</td>
                                     <td>
                                         {order.isPaid ? (
                                             order.paidAt.substring(0, 10)
@@ -171,10 +177,11 @@ const ProfileScreen = ({ location, history }) => {
                                     <td>
                                         <LinkContainer
                                             to={`/order/${order._id}`}
+                                            style={{ textDecoration: 'none' }}
                                         >
                                             <Button
-                                                className='btn-sm'
-                                                variant='light'
+                                                className='btn-md p-0'
+                                                variant='link'
                                             >
                                                 Details
                                             </Button>

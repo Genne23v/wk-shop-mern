@@ -28,7 +28,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
             shippingPrice,
             totalPrice,
         });
-        console.log(order);
+
         const createdOrder = await order.save();
         res.status(201).json(createdOrder);
     }
@@ -86,6 +86,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 });
 
 const getMyOrders = asyncHandler(async (req, res) => {
+    console.log('getting my orders', req.user._id);
     const orders = await Order.find({ user: req.user._id });
     res.json(orders);
 });
