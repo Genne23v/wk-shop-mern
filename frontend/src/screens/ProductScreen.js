@@ -161,6 +161,7 @@ const ProductScreen = ({ match, history }) => {
                                         <Button
                                             className='btn-block'
                                             type='button'
+                                            style={{ width: '100%' }}
                                             disabled={
                                                 product.countInStock === 0
                                             }
@@ -190,7 +191,7 @@ const ProductScreen = ({ match, history }) => {
                                         <p>{review.comment}</p>
                                     </ListGroup.Item>
                                 ))}
-                                <ListGroup.Item>
+                                <ListGroup.Item className='px-0'>
                                     <h2>Write a Customer Review</h2>
                                     {errorProductReview && (
                                         <Message variant='danger'>
@@ -199,7 +200,10 @@ const ProductScreen = ({ match, history }) => {
                                     )}
                                     {userInfo ? (
                                         <Form onSubmit={submitHandler}>
-                                            <Form.Group controlId='rating'>
+                                            <Form.Group
+                                                controlId='rating'
+                                                className='mb-2'
+                                            >
                                                 <Form.Label>Rating</Form.Label>
                                                 <Form.Control
                                                     as='select'
@@ -230,7 +234,10 @@ const ProductScreen = ({ match, history }) => {
                                                     </option>
                                                 </Form.Control>
                                             </Form.Group>
-                                            <Form.Group controlId='comment'>
+                                            <Form.Group
+                                                controlId='comment'
+                                                className='mb-2'
+                                            >
                                                 <Form.Label>Comment</Form.Label>
                                                 <Form.Control
                                                     as='textarea'
@@ -246,6 +253,7 @@ const ProductScreen = ({ match, history }) => {
                                             <Button
                                                 type='submit'
                                                 variant='primary'
+                                                className='mb-2'
                                             >
                                                 Submit
                                             </Button>

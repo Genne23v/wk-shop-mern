@@ -38,7 +38,7 @@ const OrderScreen = ({ match, history }) => {
         const addDecimals = (num) => {
             return (Math.round(num * 100) / 100).toFixed(2);
         };
-
+        console.log('order', order);
         order.itemsPrice = addDecimals(
             order.orderItems.reduce(
                 (acc, item) => acc + item.price * item.quantity,
@@ -78,7 +78,15 @@ const OrderScreen = ({ match, history }) => {
                 setSdkReady(true);
             }
         }
-    }, [dispatch, orderId, successPay, successDeliver, order]);
+    }, [
+        dispatch,
+        orderId,
+        successPay,
+        successDeliver,
+        order,
+        history,
+        userInfo,
+    ]);
 
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(orderId, paymentResult));

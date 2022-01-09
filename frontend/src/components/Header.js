@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { Image, Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
@@ -19,12 +19,19 @@ const Header = () => {
             <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
-                        <Navbar.Brand>WK Shop</Navbar.Brand>
+                        <Navbar.Brand>
+                            <Image
+                                src='/images/wk-logo.png'
+                                alt='logo'
+                                height={40}
+                            />
+                            Shop
+                        </Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse
                         id='basic-navbar-nav'
-                        className='justify-content-end'
+                        className='justify-content-between'
                     >
                         <Route
                             render={({ history }) => (

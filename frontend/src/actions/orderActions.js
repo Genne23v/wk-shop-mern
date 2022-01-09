@@ -18,11 +18,11 @@ import {
     ORDER_DELIVER_REQUEST,
     ORDER_DELIVER_SUCCESS,
     ORDER_DELIVER_FAIL,
-    ORDER_DELIVER_RESET,
 } from '../constants/orderConstants';
 
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
+        console.log('creating order');
         dispatch({
             type: ORDER_CREATE_REQUEST,
         });
@@ -38,7 +38,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
             },
         };
         const { data } = await axios.post(`/api/orders`, order, config);
-
+        console.log('orderAction', data, userInfo);
         dispatch({
             type: ORDER_CREATE_SUCCESS,
             payload: data,
@@ -56,6 +56,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
 
 export const getOrderDetails = (orderId) => async (dispatch, getState) => {
     try {
+        console.log('getting order details');
         dispatch({
             type: ORDER_DETAILS_REQUEST,
         });
@@ -89,6 +90,7 @@ export const getOrderDetails = (orderId) => async (dispatch, getState) => {
 export const payOrder =
     (orderId, paymentResult) => async (dispatch, getState) => {
         try {
+            console.log('paying order');
             dispatch({
                 type: ORDER_PAY_REQUEST,
             });

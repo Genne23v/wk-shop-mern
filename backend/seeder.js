@@ -14,11 +14,10 @@ connectDB();
 
 const importData = async () => {
     try {
-        console.log('importing new data');
         await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
-        console.log('all data deleted');
+
         const createdUsers = await User.insertMany(users);
         const adminUser = createdUsers[0]._id;
 
