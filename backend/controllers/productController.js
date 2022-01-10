@@ -1,5 +1,4 @@
 import asyncHandler from 'express-async-handler';
-import products from '../data/products.js';
 import Product from '../models/productModel.js';
 
 const getProducts = asyncHandler(async (req, res) => {
@@ -36,9 +35,9 @@ const getProductById = asyncHandler(async (req, res) => {
 
 const deleteProduct = asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
-
+    console.log('removing product', product);
     if (product) {
-        await Product.remove();
+        await product.remove();
         res.json({ message: 'Product removed' });
     } else {
         res.status(404);
@@ -47,20 +46,30 @@ const deleteProduct = asyncHandler(async (req, res) => {
 });
 
 const createProduct = asyncHandler(async (req, res) => {
-    const product = new Product({
-        name: 'sample',
-        price: 0,
+    const { name, price, description, image, brand, category, countInStock } =
+        req.body;
+    // console.log('req.body', req.body);
+    const product = await Product.create({
+        name,
+        price,
+        image,
+        brand,
+        category,
+        countInStock,
+        description,
         user: req.user._id,
-        image: '/images/sample.jpg',
-        brand: 'sample',
-        category: 'sample',
-        countInStock: 0,
+        rating: 0,
         numReviews: 0,
-        description: 'sample',
     });
-
-    const createdProduct = await product.save();
-    res.status(201).json(createdProduct);
+    // console.log('creating product', product);
+    if (product) {
+        res.status(201).json({
+            message: 'Product created successfully',
+        });
+    } else {
+        res.status(400);
+        throw new Error('Product not created');
+    }
 });
 
 const updateProduct = asyncHandler(async (req, res) => {

@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
 
-const Header = () => {
+const Header = ({ history }) => {
     const dispatch = useDispatch();
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
@@ -14,6 +14,7 @@ const Header = () => {
     const logoutHandler = () => {
         dispatch(logout());
     };
+
     return (
         <header>
             <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>

@@ -107,7 +107,7 @@ const ProductEditScreen = ({ match, history }) => {
                     <Message variant='danger'>{error}</Message>
                 ) : (
                     <Form onSubmit={submitHandler}>
-                        <Form.Group controlId='name'>
+                        <Form.Group controlId='name' className='mb-2'>
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type='name'
@@ -117,7 +117,7 @@ const ProductEditScreen = ({ match, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='price'>
+                        <Form.Group controlId='price' className='mb-2'>
                             <Form.Label>Price</Form.Label>
                             <Form.Control
                                 type='number'
@@ -127,7 +127,7 @@ const ProductEditScreen = ({ match, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='image'>
+                        <Form.Group controlId='image' className='mb-2'>
                             <Form.Label>Image</Form.Label>
                             <Form.Control
                                 type='text'
@@ -138,14 +138,14 @@ const ProductEditScreen = ({ match, history }) => {
 
                             <Form.File
                                 id='image-file'
-                                label='Choose File'
                                 custom
                                 onChange={uploadFileHandler}
+                                style={{ width: '100%' }}
                             ></Form.File>
                             {uploading && <Loader />}
                         </Form.Group>
 
-                        <Form.Group controlId='brand'>
+                        <Form.Group controlId='brand' className='mb-2'>
                             <Form.Label>Brand</Form.Label>
                             <Form.Control
                                 type='text'
@@ -155,7 +155,7 @@ const ProductEditScreen = ({ match, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='countInStock'>
+                        <Form.Group controlId='countInStock' className='mb-2'>
                             <Form.Label>Count In Stock</Form.Label>
                             <Form.Control
                                 type='number'
@@ -167,7 +167,7 @@ const ProductEditScreen = ({ match, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='category'>
+                        <Form.Group controlId='category' className='mb-2'>
                             <Form.Label>Category</Form.Label>
                             <Form.Control
                                 type='text'
@@ -177,7 +177,7 @@ const ProductEditScreen = ({ match, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='description'>
+                        <Form.Group controlId='description' className='mb-3'>
                             <Form.Label>Description</Form.Label>
                             <Form.Control
                                 type='text'

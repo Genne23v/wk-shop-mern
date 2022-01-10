@@ -15,6 +15,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
+import ProductCreateScreen from './screens/ProductCreateScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
@@ -50,6 +51,10 @@ function App() {
                     <Route
                         path='/admin/product/:id/edit'
                         component={ProductEditScreen}
+                    />
+                    <Route
+                        path='/admin/product/create'
+                        component={ProductCreateScreen}
                     />
                     <Route
                         path='/admin/order-list'

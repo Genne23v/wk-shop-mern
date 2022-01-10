@@ -5,11 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
-import {
-    listProducts,
-    deleteProduct,
-    createProduct,
-} from '../actions/productActions';
+import { listProducts, deleteProduct } from '../actions/productActions';
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 
 const ProductListScreen = ({ history, match }) => {
@@ -67,7 +63,7 @@ const ProductListScreen = ({ history, match }) => {
     };
 
     const createProductHandler = () => {
-        dispatch(createProduct());
+        history.push('/admin/product/create');
     };
 
     return (
