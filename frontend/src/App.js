@@ -66,7 +66,7 @@ function App() {
                         exact
                     />
                     <Route
-                        path='/sear/:keyword/page/:pageNum'
+                        path='/search/:keyword/page/:pageNum'
                         component={HomeScreen}
                         exact
                     />
