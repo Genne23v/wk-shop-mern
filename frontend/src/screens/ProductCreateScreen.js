@@ -37,7 +37,6 @@ const ProductCreateScreen = ({ history }) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log('submitting a product');
         dispatch(
             createProduct({
                 name,
