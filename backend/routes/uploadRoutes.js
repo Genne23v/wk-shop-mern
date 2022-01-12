@@ -21,7 +21,7 @@ function checkFileType(file, cb) {
         path.extname(file.originalname).toLowerCase(),
     );
     const mimeType = fileTypes.test(file.mimetype);
-    console.log('extname, mimetype', extname, mimeType);
+
     if (extname && mimeType) {
         return cb(null, true);
     } else {
@@ -36,7 +36,6 @@ const upload = multer({
 });
 
 router.post('/', upload.single('image'), (req, res) => {
-    console.log('uploading file path', req.file.path);
     res.send(`/${req.file.path}`);
 });
 
