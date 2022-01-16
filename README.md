@@ -1,6 +1,7 @@
 # WK Shop MERN Full-stack E-Commerce Application
 
-This project is from O'Reilly eBook MERN e-commerce from scratch. Bug fixes, minor UI/UX modifications are added. Backend is implemented with Node.js, Express, MongoDB. Frontend is powered by React.js, Redux and Bootstrap.<br>
+This project is from O'Reilly eBook MERN e-commerce from scratch. Bug fixes, minor UI/UX modifications are added by myself. Backend is implemented with Node.js, Express, MongoDB. Frontend is powered by React.js, Redux and Bootstrap.<br>
+> [Deployed Project Link](https://wk-shop.herokuapp.com)
 
 > This application providers features below.
 
@@ -14,7 +15,7 @@ This project is from O'Reilly eBook MERN e-commerce from scratch. Bug fixes, min
     -   Admin can add/edit/remove products
     -   Admin routes are protected by auth middleware
 -   Product Search
--   Highlighted Products (based on ratings)
+-   Highlighted Products (based on product ratings)
 
 ## Available Scripts
 
